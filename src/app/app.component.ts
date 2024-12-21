@@ -15,7 +15,8 @@ export class AppComponent {
   isExpanded = true;
   showSubmenu: boolean = false;
   showEmployeeSubmenu: boolean = false;
-  showSubLeaveMenu: boolean = false;
+  showSubDepartmentMenu: boolean = false;
+  showSubDesignationMenu: boolean = false;
   isShowing = false;
   showSubSubMenu: boolean = false;
 

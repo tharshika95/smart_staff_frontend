@@ -31,46 +31,55 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav #sidenav mode="side" opened="true" class="example-sidenav">
     <mat-nav-list>
-       <!-- Parent Menu -->
-       <mat-list-item class="parent">
-        <mat-icon mat-list-icon> home</mat-icon>
+      <!-- Dashboard -->
+      <mat-list-item routerLink="/dashboard" routerLinkActive="active">
+        <mat-icon mat-list-icon>home</mat-icon>
         <span class="full-width" style="margin-left: 10px; margin-right: 5px;">Dashboard</span>
       </mat-list-item>
-
-      <!-- Parent Menu -->
+    
+      <!-- Employee Manager -->
       <mat-list-item (click)="showEmployeeSubmenu = !showEmployeeSubmenu" class="parent">
-        <mat-icon mat-list-icon> home</mat-icon>
-        <span class="full-width" style="margin-left: 10px; margin-right: 5px;">Employee manger</span>
+        <mat-icon mat-list-icon>home</mat-icon>
+        <span class="full-width" style="margin-left: 10px; margin-right: 5px;">Employee manager</span>
         <mat-icon class="menu-button" [ngClass]="{'rotated': showEmployeeSubmenu}">expand_more</mat-icon>
       </mat-list-item>
-
-      <!-- Submenu -->
       <div class="submenu" [ngClass]="{'expanded': showEmployeeSubmenu}">
-        <a mat-list-item routerLink="/submenu1">Add new Employee</a>
-        <a mat-list-item routerLink="/submenu2">Registerd Employees</a>
-        <a mat-list-item routerLink="/submenu2">Past Employees</a>
+        <mat-list-item routerLink="/employee/all" routerLinkActive="active">View All Employee</mat-list-item>
+        <mat-list-item routerLink="/employee/add" routerLinkActive="active">Add new Employee</mat-list-item>
+        <mat-list-item routerLink="/employee/registered" routerLinkActive="active">Registered Employees</mat-list-item>
+        <mat-list-item routerLink="/employee/past" routerLinkActive="active">Past Employees</mat-list-item>
+      </div>
+    
+      <!-- Department Manager -->
+      <mat-list-item (click)="showSubDepartmentMenu = !showSubDepartmentMenu" class="parent">
+        <mat-icon mat-list-icon>home</mat-icon>
+        <span class="full-width" style="margin-left: 10px; margin-right: 5px;">Department manager</span>
+        <mat-icon class="menu-button" [ngClass]="{'rotated': showSubDepartmentMenu}">expand_more</mat-icon>
+      </mat-list-item>
+      <div class="submenu" [ngClass]="{'expanded': showSubDepartmentMenu}">
+        <mat-list-item routerLink="/department/all" routerLinkActive="active">View All Departments</mat-list-item>
+        <mat-list-item routerLink="/department/add" routerLinkActive="active">Add new Department</mat-list-item>
+        <mat-list-item routerLink="/department/edit" routerLinkActive="active">Edit Department</mat-list-item>
       </div>
 
-       <!-- Parent Menu -->
-       <mat-list-item (click)="showSubLeaveMenu = !showSubLeaveMenu" class="parent">
-        <mat-icon mat-list-icon> home</mat-icon>
-        <span class="full-width" style="margin-left: 10px; margin-right: 5px;">Leave manger</span>
-        <mat-icon class="menu-button" [ngClass]="{'rotated': showSubLeaveMenu}">expand_more</mat-icon>
+       <!-- Designation Manager -->
+       <mat-list-item (click)="showSubDesignationMenu = !showSubDesignationMenu" class="parent">
+        <mat-icon mat-list-icon>home</mat-icon>
+        <span class="full-width" style="margin-left: 10px; margin-right: 5px;">Designation manager</span>
+        <mat-icon class="menu-button" [ngClass]="{'rotated': showSubDesignationMenu}">expand_more</mat-icon>
       </mat-list-item>
-
-      <!-- Submenu -->
-      <div class="submenu" [ngClass]="{'expanded': showSubLeaveMenu}">
-        <a mat-list-item routerLink="/submenu1">Pending Leaves</a>
-        <a mat-list-item routerLink="/submenu2">Accepeted Leaves</a>
-        <a mat-list-item routerLink="/submenu2">Rejected Leaves</a>
+      <div class="submenu" [ngClass]="{'expanded': showSubDesignationMenu}">
+        <mat-list-item routerLink="/designation/all" routerLinkActive="active">View All Designations</mat-list-item>
+        <mat-list-item routerLink="/designation/add" routerLinkActive="active">Add new Designation</mat-list-item>
+        <mat-list-item routerLink="/designation/edit" routerLinkActive="active">Edit Designation</mat-list-item>
       </div>
 
     </mat-nav-list>
+    
   </mat-sidenav>
 
   <!-- Main Content -->
-  <div class="example-sidenav-content">
-    <h2>Welcome to the Main Content</h2>
-    <p>Resize the screen or toggle the sidebar to test responsiveness.</p>
+  <div class="main-content">
+    <router-outlet></router-outlet>
   </div>
 </mat-sidenav-container>

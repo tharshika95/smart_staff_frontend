@@ -17,8 +17,18 @@ import { MatMenuModule } from '@angular/material/menu';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { DepartmentComponent } from './department/department.component';
-import { LeaveComponent } from './leave/leave.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DesignationComponent } from './designation/designation.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormsModule, ɵInternalFormsSharedModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatChipsModule } from '@angular/material/chips';
+import { AddNewEmployeeComponent } from './add-new-employee/add-new-employee.component';
 
 @NgModule({
   exports: [
@@ -29,8 +39,9 @@ import { LogoutComponent } from './logout/logout.component';
     DashboardComponent,
     EmployeeComponent,
     DepartmentComponent,
-    LeaveComponent,
-    LogoutComponent
+    LogoutComponent,
+    DesignationComponent,
+    AddNewEmployeeComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +52,20 @@ import { LogoutComponent } from './logout/logout.component';
     MatCardModule,
     MatListModule,
     MatDividerModule,
-    MatMenuModule
+    MatMenuModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ɵInternalFormsSharedModule,
+    MatFormFieldModule,
+    MatInputModule, 
+    MatTableModule,
+    MatSortModule, 
+    MatPaginatorModule,
+    MatChipsModule,
+    MatSort,
+    MatPaginator,
+
   ],
   providers: [
     provideAnimationsAsync()

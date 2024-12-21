@@ -167,3 +167,24 @@ mat-icon.mat-list-icon {
 .menu-button.rotated {
   transform: rotate(180deg); /* Rotate the icon when expanded */
 }
+.active-link {
+  background-color: rgba(0, 0, 0, 0.04);
+  font-weight: bold;
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 600px) {
+  .sidenav-container {
+    flex-direction: column;
+  }
+  .sidenav {
+    display: none;
+  }
+  .dashboard-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.main-content {
+  padding: 16px;
+}
