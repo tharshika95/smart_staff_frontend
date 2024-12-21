@@ -1,1 +1,117 @@
-<p>add-new-employee works!</p>
+<div class="form-container mat-elevation-z8">
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <mat-card>
+            <mat-card-title>Create New Employee</mat-card-title>
+            <mat-card-content>
+                <div class="form-group">
+                    <!-- Profile Image -->
+                    <div class="profile-image-container">
+                        <div class="image-upload-wrapper">
+                          <div class="file-upload-area" (click)="triggerFileInput()">
+                            <input
+                              type="file"
+                              id="fileInput"
+                              (change)="onFileSelected($event)"
+                              #fileInput
+                              class="file-input"
+                            />
+                            <span *ngIf="!uploadedImage" class="upload-text">
+                              Click to Upload Image
+                            </span>
+                            <img
+                              *ngIf="uploadedImage"
+                              [src]="uploadedImage"
+                              alt="Employee Profile"
+                              class="profile-thumb"
+                            />
+                          </div>
+                          <div class="image-actions" *ngIf="uploadedImage">
+                            <button
+                              mat-icon-button
+                              color="warn"
+                              (click)="onDeleteImage()"
+                              class="delete-btn"
+                            >
+                              <mat-icon>delete</mat-icon>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Employee ID</mat-label>
+                    <input matInput formControlName="empId" readonly />
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" placeholder="John Doe" />
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" placeholder="example@domain.com" />
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Date of Joining</mat-label>
+                    <input matInput [matDatepicker]="joiningDatePicker" formControlName="dateOfJoining"
+                        placeholder="Select Date" />
+                    <mat-datepicker-toggle matSuffix [for]="joiningDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #joiningDatePicker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Salary</mat-label>
+                    <input matInput formControlName="salary" type="number" placeholder="75000.00" />
+                </mat-form-field>
+
+                <mat-slide-toggle formControlName="isActive">Active</mat-slide-toggle>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Temporary Address</mat-label>
+                    <textarea matInput formControlName="temporaryAddress" placeholder="Temporary Address"></textarea>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Permanent Address</mat-label>
+                    <textarea matInput formControlName="permanentAddress" placeholder="Permanent Address"></textarea>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Contact No. 1</mat-label>
+                    <input matInput formControlName="contactNo1" type="tel" />
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Contact No. 2</mat-label>
+                    <input matInput formControlName="contactNo2" type="tel" />
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Department</mat-label>
+                    <mat-select formControlName="departmentId">
+                        <mat-option *ngFor="let department of departments" [value]="department.id">
+                            {{ department.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Designation</mat-label>
+                    <mat-select formControlName="designationId">
+                        <mat-option *ngFor="let designation of designations" [value]="designation.id">
+                            {{ designation.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-card-content>
+
+            <mat-card-actions>
+                <button mat-raised-button color="primary" type="submit">Save</button>
+                <button mat-button color="warn" type="button" (click)="resetForm()">Reset</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>

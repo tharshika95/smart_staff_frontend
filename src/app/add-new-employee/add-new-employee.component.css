@@ -1,0 +1,134 @@
+.image-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 10px;
+  }
+  
+  .form-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f7f9fc;
+    border-radius: 8px;
+  }
+  
+  mat-card {
+    padding: 20px;
+  }
+  
+  /* .profile-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  } */
+/*   
+  .profile-thumb {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 16px;
+  }
+   */
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  mat-slide-toggle {
+    margin-bottom: 16px;
+  }
+  
+  mat-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  
+/* Container for profile image and upload actions */
+.profile-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  /* Wrapper for image and upload actions */
+  .image-upload-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 2px dashed #007bff;
+    border-radius: 8px;
+    padding: 1px;
+    cursor: pointer;
+    background-color: #f7f7f7;
+    transition: background-color 0.3s ease;
+    width: 150px;
+    height: 150px;
+  }
+  
+  /* Hover effect for upload area */
+  .file-upload-area:hover {
+    background-color: #e6f7ff;
+  }
+  
+  /* Image preview area */
+  .profile-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    max-width: 180px;
+    max-height: 180px;
+    margin-bottom: 10px;
+  }
+  
+  /* Upload text */
+  .upload-text {
+    font-size: 14px;
+    color: #007bff;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Action buttons for image delete */
+  .image-actions {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+  }
+  
+  .delete-btn {
+    color: red;
+    font-size: 20px;
+  }
+  
+  /* File input styling (hidden) */
+  .file-input {
+    display: none;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 600px) {
+    .profile-thumb {
+      width: 100px;
+      height: 100px;
+    }
+  
+    .file-upload-area {
+      width: 150px;
+      height: 150px;
+    }
+  }
+  
+  

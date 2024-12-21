@@ -21,7 +21,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DesignationComponent } from './designation/designation.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormsModule, ɵInternalFormsSharedModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, ɵInternalFormsSharedModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -29,6 +29,14 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatChipsModule } from '@angular/material/chips';
 import { AddNewEmployeeComponent } from './add-new-employee/add-new-employee.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
+
+import { provideToastr, ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   exports: [
@@ -65,10 +73,26 @@ import { AddNewEmployeeComponent } from './add-new-employee/add-new-employee.com
     MatChipsModule,
     MatSort,
     MatPaginator,
-
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    CommonModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(
+      {
+        timeOut: 10000,
+        positionClass: 'toast-bottom-right',
+        preventDuplicates: true,
+      }
+    )
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+   
+    provideToastr(), // Toastr providers
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

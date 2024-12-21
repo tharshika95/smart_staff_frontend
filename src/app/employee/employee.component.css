@@ -39,3 +39,16 @@ td, th {
 .status-badge.inactive {
   background-color: #f44336; /* Red for inactive */
 }
+.name-cell {
+  display: flex;
+  align-items: center;
+}
+
+.profile-thumbnail {
+  width: 40px; /* Adjust size as needed */
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 8px; /* Space between image and name */
+  border: 2px solid #ddd; /* Optional border */
+}

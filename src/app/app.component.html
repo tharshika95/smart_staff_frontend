@@ -39,7 +39,9 @@
     
       <!-- Employee Manager -->
       <mat-list-item (click)="showEmployeeSubmenu = !showEmployeeSubmenu" class="parent">
-        <mat-icon mat-list-icon>home</mat-icon>
+        <mat-icon mat-list-icon><span class="material-icons-outlined">
+          people
+          </span></mat-icon>
         <span class="full-width" style="margin-left: 10px; margin-right: 5px;">Employee manager</span>
         <mat-icon class="menu-button" [ngClass]="{'rotated': showEmployeeSubmenu}">expand_more</mat-icon>
       </mat-list-item>
@@ -52,7 +54,9 @@
     
       <!-- Department Manager -->
       <mat-list-item (click)="showSubDepartmentMenu = !showSubDepartmentMenu" class="parent">
-        <mat-icon mat-list-icon>home</mat-icon>
+        <mat-icon mat-list-icon><span class="material-icons-outlined">
+          maps_home_work
+          </span></mat-icon>
         <span class="full-width" style="margin-left: 10px; margin-right: 5px;">Department manager</span>
         <mat-icon class="menu-button" [ngClass]="{'rotated': showSubDepartmentMenu}">expand_more</mat-icon>
       </mat-list-item>
@@ -64,7 +68,7 @@
 
        <!-- Designation Manager -->
        <mat-list-item (click)="showSubDesignationMenu = !showSubDesignationMenu" class="parent">
-        <mat-icon mat-list-icon>home</mat-icon>
+        <mat-icon mat-list-icon>badge</mat-icon>
         <span class="full-width" style="margin-left: 10px; margin-right: 5px;">Designation manager</span>
         <mat-icon class="menu-button" [ngClass]="{'rotated': showSubDesignationMenu}">expand_more</mat-icon>
       </mat-list-item>

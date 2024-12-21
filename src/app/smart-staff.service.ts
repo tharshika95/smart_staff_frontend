@@ -39,6 +39,24 @@ export class SmartStaffService {
     return this.http.get<ApiResponse<Designation[]>>(`${this.apiUrl}/api/designations`);
   }
 
+  uploadEmployeeImage(file: File, empId: string) {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.http.post<ApiResponse<string>>(`${this.apiUrl}/api/employees/${empId}/upload-image`, formData);
+  }
+  
+  deleteEmployeeImage(empId: string) {
+    return this.http.delete<ApiResponse<string>>(`${this.apiUrl}/api/employees/${empId}/remove-image`);
+  }
+  
+  createEmployee(payload: any) {
+    return this.http.post<ApiResponse<any>>(`${this.apiUrl}/api/employees`, payload);
+  }
+
+  generateNextEmpId() {
+    return this.http.get<ApiResponse<string>>(`${this.apiUrl}/api/employees/generateEmpId`);
+  }
+
 
 }
 

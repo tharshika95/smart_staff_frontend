@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { SmartStaffService } from '../smart-staff.service';
+import { basePath, SmartStaffService } from '../smart-staff.service';
 import { Employee } from '../model/smart_staff_models';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -17,6 +17,7 @@ export class EmployeeComponent implements AfterViewInit{
   totalEmployees: number = 0;
   currentPage: number = 0; // Current page index (starts from 0)
   pageSize: number = 5;   // Number of items per page
+  basePath: string = basePath + "/api/employees";
 
 
   displayedColumns: string[] = ['empId', 'name', 'email', 'status', 'actions'];
