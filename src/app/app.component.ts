@@ -17,6 +17,7 @@ export class AppComponent {
   showEmployeeSubmenu: boolean = false;
   showSubDepartmentMenu: boolean = false;
   showSubDesignationMenu: boolean = false;
+  showUserManagernMenu: boolean = false;
   isShowing = false;
   showSubSubMenu: boolean = false;
 

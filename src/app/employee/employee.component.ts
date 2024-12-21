@@ -4,6 +4,7 @@ import { Employee } from '../model/smart_staff_models';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-employee',
@@ -16,7 +17,7 @@ export class EmployeeComponent implements AfterViewInit{
   employees: Employee[] = [];
   totalEmployees: number = 0;
   currentPage: number = 0; // Current page index (starts from 0)
-  pageSize: number = 5;   // Number of items per page
+  pageSize: number = 8;   // Number of items per page
   basePath: string = basePath + "/api/employees";
 
 
@@ -27,6 +28,10 @@ export class EmployeeComponent implements AfterViewInit{
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
+
+  employeeForm!: FormGroup;
+  uploadedImage: string | null = null;
+  employeeId: string | null = null;
 
   constructor(private service: SmartStaffService) {  }
 
@@ -97,7 +102,34 @@ export class EmployeeComponent implements AfterViewInit{
   
   onEdit(row: Employee): void {
     console.log('Edit clicked', row);
-    // Navigate to the edit page or open a dialog for editing
+    this.service.getEmployeeDetails(row.id).subscribe((response) => {
+      if (response.status === 'SUCCESS' && response.data) {
+        const employee = response.data;
+        console.log(employee)
+        // Patch form values
+        this.employeeForm.patchValue({
+          empId: employee.empId,
+          name: employee.name,
+          email: employee.email,
+          dateOfJoining: employee.dateOfJoining,
+          salary: employee.salary,
+          isActive: employee.active,
+          temporaryAddress: employee.temporaryAddress,
+          permanentAddress: employee.permanentAddress,
+          contactNo1: employee.contactNo1,
+          contactNo2: employee.contactNo2,
+          departmentId: employee.department.id,
+          designationId: employee.designation.id,
+          imagePath: employee.imagePath
+        });
+  
+        // Set the uploaded image for preview
+        this.uploadedImage = this.basePath + employee.imagePath;
+  
+        // If empId is needed for other operations, store it
+        this.employeeId = employee.empId;
+      }
+    });
   }
   
   onDelete(row: Employee): void {

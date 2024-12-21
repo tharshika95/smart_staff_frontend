@@ -1,0 +1,35 @@
+<div class="employee-card">
+    <div class="card-header">
+      <img
+        *ngIf="employee?.imagePath"
+        [src]="basePath + employee?.imagePath"
+        alt="{{ employee?.name }}"
+        class="employee-image"
+      />
+      <div *ngIf="!employee?.imagePath" class="placeholder-image">
+        No Image
+      </div>
+    </div>
+    <div class="card-body">
+      <h2>{{ employee?.name }}</h2>
+      <p><strong>Email:</strong> {{ employee?.email }}</p>
+      <p><strong>Contact No 1:</strong> {{ employee?.contactNo1 }}</p>
+      <p><strong>Contact No 2:</strong> {{ employee?.contactNo2 }}</p>
+      <p><strong>Date of Joining:</strong> {{ employee?.dateOfJoining | date }}</p>
+      <p><strong>Salary:</strong> {{ employee?.salary | currency }}</p>
+      <p><strong>Department:</strong> {{ employee?.department?.name }}</p>
+      <p><strong>Designation:</strong> {{ employee?.designation?.name }}</p>
+      <p>
+        <strong>Status:</strong>
+        <span [class.active]="employee?.active" [class.inactive]="!employee?.active">
+          {{ employee?.active ? 'Active' : 'Inactive' }}
+        </span>
+      </p>
+      <div class="address-section">
+        <h4>Addresses</h4>
+        <p><strong>Temporary Address:</strong> {{ employee?.temporaryAddress }}</p>
+        <p><strong>Permanent Address:</strong> {{ employee?.permanentAddress }}</p>
+      </div>
+    </div>
+  </div>
+  

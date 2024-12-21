@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiResponse, Department, Designation, EmployeeResponse } from './model/smart_staff_models';
+import { ApiResponse, Department, Designation, Employee, EmployeeResponse } from './model/smart_staff_models';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -57,7 +57,14 @@ export class SmartStaffService {
     return this.http.get<ApiResponse<string>>(`${this.apiUrl}/api/employees/generateEmpId`);
   }
 
+  getEmployeeDetails(id: number) {
+    return this.http.get<ApiResponse<Employee>>(`${this.apiUrl}/api/employees/${id}`);
+  }
+
+  updateEmployee(payload: any, id: number) {
+    return this.http.put<ApiResponse<any>>(`${this.apiUrl}/api/employees/${id}`, payload);
+  }
 
 }
 
-export const basePath = "http://localhost:8080";
+export const basePath = "http://localhost:8080" ;

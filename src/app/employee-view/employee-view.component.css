@@ -1,0 +1,65 @@
+.employee-card {
+    max-width: 400px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .card-header {
+    position: relative;
+    height: 200px;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .employee-image {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .placeholder-image {
+    font-size: 18px;
+    color: #aaa;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .card-body h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .card-body p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .address-section {
+    margin-top: 15px;
+  }
+  
+  .address-section h4 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #444;
+  }
+  
+  .active {
+    color: green;
+  }
+  
+  .inactive {
+    color: red;
+  }
+  

@@ -37,6 +37,8 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 
 import { provideToastr, ToastrModule } from 'ngx-toastr';
+import { EmployeeViewComponent } from './employee-view/employee-view.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   exports: [
@@ -49,7 +51,9 @@ import { provideToastr, ToastrModule } from 'ngx-toastr';
     DepartmentComponent,
     LogoutComponent,
     DesignationComponent,
-    AddNewEmployeeComponent
+    AddNewEmployeeComponent,
+    EmployeeViewComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
