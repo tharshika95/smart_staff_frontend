@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-employee',
@@ -33,7 +34,9 @@ export class EmployeeComponent implements AfterViewInit{
   uploadedImage: string | null = null;
   employeeId: string | null = null;
 
-  constructor(private service: SmartStaffService) {  }
+  constructor(private service: SmartStaffService,
+    private toastr: ToastrService
+  ) {  }
 
   ngAfterViewInit() {
     // Ensure paginator and sort are linked after view initialization
@@ -134,7 +137,16 @@ export class EmployeeComponent implements AfterViewInit{
   
   onDelete(row: Employee): void {
     console.log('Delete clicked', row);
-    // Call a service to delete the employee or open a confirmation dialog
+    this.service.deleteEmployee(Number(row.id)).subscribe((response) => {
+      if (response.status === 'SUCCESS') {
+        console.log(response)
+        this.toastr.success('Employee deleted successfully!', 'success');
+        this.fetchEmployees();
+      }
+      else{
+        this.toastr.error('Employee deleted failed!', 'Error');
+      }
+    });
   }
 
 }

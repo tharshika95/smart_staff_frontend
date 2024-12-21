@@ -65,6 +65,10 @@ export class SmartStaffService {
     return this.http.put<ApiResponse<any>>(`${this.apiUrl}/api/employees/${id}`, payload);
   }
 
+  deleteEmployee(id: number) {
+    return this.http.delete<ApiResponse<any>>(`${this.apiUrl}/api/employees/${id}`);
+  }
+
 }
 
 export const basePath = "http://localhost:8080" ;
