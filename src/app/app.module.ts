@@ -41,6 +41,9 @@ import { EmployeeViewComponent } from './employee-view/employee-view.component';
 import { UserComponent } from './user/user.component';
 import { AddNewDepartmentComponent } from './add-new-department/add-new-department.component';
 import { AddNewDesignationComponent } from './add-new-designation/add-new-designation.component';
+import { LoginComponent } from './login/login.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   exports: [
@@ -57,7 +60,10 @@ import { AddNewDesignationComponent } from './add-new-designation/add-new-design
     EmployeeViewComponent,
     UserComponent,
     AddNewDepartmentComponent,
-    AddNewDesignationComponent
+    AddNewDesignationComponent,
+    LoginComponent,
+    ForbiddenComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,

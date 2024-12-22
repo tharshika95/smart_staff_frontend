@@ -1,92 +1,89 @@
-<mat-toolbar color="primary" class="example-toolbar">
-  <!-- Sidebar Toggle Button -->
-  <button mat-icon-button (click)="isExpanded = !isExpanded">
-    <mat-icon>menu</mat-icon>
-  </button>
-
-  <!-- Application Title -->
-  <span class="example-app-name">Smart Staff Employee Management</span>
-
-  <!-- Spacer to push profile to the right -->
-  <span class="spacer"></span>
-
-  <!-- Profile Icon with Menu -->
-  <mat-menu #profileMenu="matMenu">
-    <button mat-menu-item routerLink="/profile">
-      <mat-icon>person</mat-icon>
-      <span>Profile</span>
+<div *ngIf="shouldShowLayout()">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <!-- Sidebar Toggle Button -->
+    <button mat-icon-button (click)="isExpanded = !isExpanded">
+      <mat-icon>menu</mat-icon>
     </button>
-    <button mat-menu-item (click)="logout()">
-      <mat-icon>logout</mat-icon>
-      <span>Logout</span>
+  
+    <!-- Application Title -->
+    <span class="example-app-name">Smart Staff Employee Management</span>
+  
+    <!-- Spacer to push profile to the right -->
+    <span class="spacer"></span>
+  
+    <!-- Profile Icon with Menu -->
+    <mat-menu #profileMenu="matMenu">
+      <button mat-menu-item routerLink="/profile">
+        <mat-icon>person</mat-icon>
+        <span>Profile</span>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  
+    <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+      <mat-icon>account_circle</mat-icon>
     </button>
-  </mat-menu>
-
-  <button mat-icon-button [matMenuTriggerFor]="profileMenu">
-    <mat-icon>account_circle</mat-icon>
-  </button>
-</mat-toolbar>
-
-<!-- Sidenav Container -->
-<mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav mode="side" opened="true" class="example-sidenav">
-    <mat-nav-list>
-      <!-- Dashboard -->
-      <mat-list-item routerLink="/dashboard" routerLinkActive="active">
-        <mat-icon mat-list-icon>home</mat-icon>
-        <span class="full-width" style="margin-left: 10px; margin-right: 5px;">Dashboard</span>
-      </mat-list-item>
-    
-      <!-- Employee Manager -->
-      <mat-list-item (click)="showEmployeeSubmenu = !showEmployeeSubmenu" class="parent">
-        <mat-icon mat-list-icon><span class="material-icons-outlined">
-          people
-          </span></mat-icon>
-        <span class="full-width" style="margin-left: 10px; margin-right: 5px;">Employee manager</span>
-        <mat-icon class="menu-button" [ngClass]="{'rotated': showEmployeeSubmenu}">expand_more</mat-icon>
-      </mat-list-item>
-      <div class="submenu" [ngClass]="{'expanded': showEmployeeSubmenu}">
-        <mat-list-item routerLink="/employee/all" routerLinkActive="active">View All Employee</mat-list-item>
-      </div>
-    
-      <!-- Department Manager -->
-      <mat-list-item (click)="showSubDepartmentMenu = !showSubDepartmentMenu" class="parent">
-        <mat-icon mat-list-icon><span class="material-icons-outlined">
-          maps_home_work
-          </span></mat-icon>
-        <span class="full-width" style="margin-left: 10px; margin-right: 5px;">Department manager</span>
-        <mat-icon class="menu-button" [ngClass]="{'rotated': showSubDepartmentMenu}">expand_more</mat-icon>
-      </mat-list-item>
-      <div class="submenu" [ngClass]="{'expanded': showSubDepartmentMenu}">
-        <mat-list-item routerLink="/department/all" routerLinkActive="active">View All Departments</mat-list-item>
-      </div>
-
-       <!-- Designation Manager -->
-       <mat-list-item (click)="showSubDesignationMenu = !showSubDesignationMenu" class="parent">
-        <mat-icon mat-list-icon>badge</mat-icon>
-        <span class="full-width" style="margin-left: 10px; margin-right: 5px;">Designation manager</span>
-        <mat-icon class="menu-button" [ngClass]="{'rotated': showSubDesignationMenu}">expand_more</mat-icon>
-      </mat-list-item>
-      <div class="submenu" [ngClass]="{'expanded': showSubDesignationMenu}">
-        <mat-list-item routerLink="/designation/all" routerLinkActive="active">View All Designations</mat-list-item>
-      </div>
+  </mat-toolbar>
+  
+  <!-- Sidenav Container -->
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" opened="true" class="example-sidenav">
+      <mat-nav-list>
+        <!-- Dashboard -->
+        <mat-list-item routerLink="/dashboard" routerLinkActive="active">
+          <mat-icon mat-list-icon>home</mat-icon>
+          <span class="full-width" style="margin-left: 10px; margin-right: 5px;">Dashboard</span>
+        </mat-list-item>
       
-      <!-- User Manager -->
-      <!-- <mat-list-item (click)="showUserManagernMenu = !showUserManagernMenu" class="parent">
-        <mat-icon mat-list-icon>manage_accounts</mat-icon>
-        <span class="full-width" style="margin-left: 10px; margin-right: 5px;">User manager</span>
-        <mat-icon class="menu-button" [ngClass]="{'rotated': showUserManagernMenu}">expand_more</mat-icon>
-      </mat-list-item>
-      <div class="submenu" [ngClass]="{'expanded': showUserManagernMenu}">
-        <mat-list-item routerLink="/users/all" routerLinkActive="active">View All Users</mat-list-item>
-      </div> -->
+        <!-- Employee Manager -->
+        <mat-list-item (click)="showEmployeeSubmenu = !showEmployeeSubmenu" class="parent">
+          <mat-icon mat-list-icon><span class="material-icons-outlined">
+            people
+            </span></mat-icon>
+          <span class="full-width" style="margin-left: 10px; margin-right: 5px;">Employee manager</span>
+          <mat-icon class="menu-button" [ngClass]="{'rotated': showEmployeeSubmenu}">expand_more</mat-icon>
+        </mat-list-item>
+        <div class="submenu" [ngClass]="{'expanded': showEmployeeSubmenu}">
+          <mat-list-item routerLink="/employee/all" routerLinkActive="active">View All Employee</mat-list-item>
+        </div>
+      
+        <!-- Department Manager -->
+        <mat-list-item (click)="showSubDepartmentMenu = !showSubDepartmentMenu" class="parent">
+          <mat-icon mat-list-icon><span class="material-icons-outlined">
+            maps_home_work
+            </span></mat-icon>
+          <span class="full-width" style="margin-left: 10px; margin-right: 5px;">Department manager</span>
+          <mat-icon class="menu-button" [ngClass]="{'rotated': showSubDepartmentMenu}">expand_more</mat-icon>
+        </mat-list-item>
+        <div class="submenu" [ngClass]="{'expanded': showSubDepartmentMenu}">
+          <mat-list-item routerLink="/department/all" routerLinkActive="active">View All Departments</mat-list-item>
+        </div>
+  
+         <!-- Designation Manager -->
+         <mat-list-item (click)="showSubDesignationMenu = !showSubDesignationMenu" class="parent">
+          <mat-icon mat-list-icon>badge</mat-icon>
+          <span class="full-width" style="margin-left: 10px; margin-right: 5px;">Designation manager</span>
+          <mat-icon class="menu-button" [ngClass]="{'rotated': showSubDesignationMenu}">expand_more</mat-icon>
+        </mat-list-item>
+        <div class="submenu" [ngClass]="{'expanded': showSubDesignationMenu}">
+          <mat-list-item routerLink="/designation/all" routerLinkActive="active">View All Designations</mat-list-item>
+        </div>
+        
+      </mat-nav-list>
+      
+    </mat-sidenav>
+  
+    <!-- Main Content -->
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-container>
+</div>
 
-    </mat-nav-list>
-    
-  </mat-sidenav>
-
-  <!-- Main Content -->
-  <div class="main-content">
-    <router-outlet></router-outlet>
-  </div>
-</mat-sidenav-container>
+<!-- Main Content for excluded routes -->
+<div *ngIf="!shouldShowLayout()">
+  <router-outlet></router-outlet>
+</div>

@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -33,11 +34,16 @@ export class AppComponent {
     }
   }
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private service: AuthService) {}
 
   logout() {
     // Perform logout logic here
     console.log('Logged out');
-    this.router.navigate(['/']); // Redirect to home or login
+    this.service.logout()
+  }
+
+  shouldShowLayout(): boolean {
+    const excludedRoutes = ['/login', '/403', '/404']; // Add more routes if needed
+    return !excludedRoutes.includes(this.router.url);
   }
 }
