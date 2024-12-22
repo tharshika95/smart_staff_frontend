@@ -1,0 +1,31 @@
+<div class="container">
+    <h2>{{ isEditMode ? 'Edit Designation' : 'Create Designation' }}</h2>
+    
+    <form [formGroup]="designationForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Designation Name</mat-label>
+        <input matInput formControlName="name" placeholder="Enter designation name" />
+        <mat-error *ngIf="designationForm.get('name')?.hasError('required')">Name is required</mat-error>
+        <mat-error *ngIf="designationForm.get('name')?.hasError('maxlength')">Maximum length is 100 characters</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" placeholder="Enter designation description"></textarea>
+        <mat-error *ngIf="designationForm.get('description')?.hasError('required')">Description is required</mat-error>
+        <mat-error *ngIf="designationForm.get('description')?.hasError('maxlength')">Maximum length is 500 characters</mat-error>
+      </mat-form-field>
+  
+      <mat-slide-toggle formControlName="isActive">Active</mat-slide-toggle>
+  
+      <div class="button-group">
+        <button mat-raised-button color="primary" type="submit" [disabled]="designationForm.invalid">
+          {{ isEditMode ? 'Update' : 'Create' }}
+        </button>
+        <button mat-raised-button color="warn" (click)="router.navigate(['/designation/all'])" type="button">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+  

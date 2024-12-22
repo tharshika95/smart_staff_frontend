@@ -31,12 +31,44 @@ export class SmartStaffService {
     return this.http.get<ApiResponse<Department[]>>(`${this.apiUrl}/api/departments`);
   }
 
+  getDepartmentDetail(id: number): Observable<ApiResponse<Department>> {
+    return this.http.get<ApiResponse<Department>>(`${this.apiUrl}/api/departments/${id}`);
+  }
+
+  updateDepartmentDetail(payload: any, id: number): Observable<ApiResponse<Department>> {
+    return this.http.put<ApiResponse<Department>>(`${this.apiUrl}/api/departments/${id}`, payload);
+  }
+
+  deleteDepartmentDetail(id: number): Observable<ApiResponse<Department>> {
+    return this.http.delete<ApiResponse<Department>>(`${this.apiUrl}/api/departments/${id}`);
+  }
+
+  createDepartmentDetail(payload: any): Observable<ApiResponse<Department>> {
+    return this.http.post<ApiResponse<Department>>(`${this.apiUrl}/api/departments`, payload);
+  }
+
   /**
  * Fetch all designations.
  * @returns Observable<ApiResponse<Designation[]>>
  */
   getDesignations(): Observable<ApiResponse<Designation[]>> {
     return this.http.get<ApiResponse<Designation[]>>(`${this.apiUrl}/api/designations`);
+  }
+
+  getDesignationDetail(id: number): Observable<ApiResponse<Designation>> {
+    return this.http.get<ApiResponse<Designation>>(`${this.apiUrl}/api/designations/${id}`);
+  }
+
+  updateDesignationDetail(payload: any, id: number): Observable<ApiResponse<Designation>> {
+    return this.http.put<ApiResponse<Designation>>(`${this.apiUrl}/api/designations/${id}`, payload);
+  }
+
+  deleteDesignationDetail(id: number): Observable<ApiResponse<Designation>> {
+    return this.http.delete<ApiResponse<Designation>>(`${this.apiUrl}/api/designations/${id}`);
+  }
+
+  createDesignationDetail(payload: any): Observable<ApiResponse<Department>> {
+    return this.http.post<ApiResponse<Department>>(`${this.apiUrl}/api/designations`, payload);
   }
 
   uploadEmployeeImage(file: File, empId: string) {

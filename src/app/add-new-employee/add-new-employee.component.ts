@@ -19,7 +19,7 @@ export class AddNewEmployeeComponent {
   designations: Designation[] = [];
   uploadedImage: string | null = null;
   employeeId: string | null = null;
-  basepath: string = basePath;
+  basepath: string = basePath + "/api/employees";
 
   constructor(private fb: FormBuilder,
     private service: SmartStaffService,

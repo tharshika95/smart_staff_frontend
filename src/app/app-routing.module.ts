@@ -8,6 +8,8 @@ import { DesignationComponent } from './designation/designation.component';
 import { AddNewEmployeeComponent } from './add-new-employee/add-new-employee.component';
 import { EmployeeViewComponent } from './employee-view/employee-view.component';
 import { UserComponent } from './user/user.component';
+import { AddNewDepartmentComponent } from './add-new-department/add-new-department.component';
+import { AddNewDesignationComponent } from './add-new-designation/add-new-designation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -27,14 +29,16 @@ const routes: Routes = [
     path: 'department',
     children: [
       { path: 'all', component: DepartmentComponent },
-      { path: 'edit/:id', component: DepartmentComponent },
+      { path: 'add', component: AddNewDepartmentComponent },
+      { path: 'edit/:id', component: AddNewDepartmentComponent },
     ],
   },
   {
     path: 'designation',
     children: [
       { path: 'all', component: DesignationComponent },
-      { path: 'edit/:id', component: DesignationComponent },
+      { path: 'add', component: AddNewDesignationComponent },
+      { path: 'edit/:id', component: AddNewDesignationComponent },
     ],
   },
   {

@@ -39,6 +39,8 @@ import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-br
 import { provideToastr, ToastrModule } from 'ngx-toastr';
 import { EmployeeViewComponent } from './employee-view/employee-view.component';
 import { UserComponent } from './user/user.component';
+import { AddNewDepartmentComponent } from './add-new-department/add-new-department.component';
+import { AddNewDesignationComponent } from './add-new-designation/add-new-designation.component';
 
 @NgModule({
   exports: [
@@ -53,7 +55,9 @@ import { UserComponent } from './user/user.component';
     DesignationComponent,
     AddNewEmployeeComponent,
     EmployeeViewComponent,
-    UserComponent
+    UserComponent,
+    AddNewDepartmentComponent,
+    AddNewDesignationComponent
   ],
   imports: [
     BrowserModule,
