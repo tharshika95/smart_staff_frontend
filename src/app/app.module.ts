@@ -20,7 +20,7 @@ import { DepartmentComponent } from './department/department.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DesignationComponent } from './designation/designation.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule, ɵInternalFormsSharedModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -44,6 +44,7 @@ import { AddNewDesignationComponent } from './add-new-designation/add-new-design
 import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { AuthInterceptor } from './auth.intercepter';
 
 @NgModule({
   exports: [
@@ -107,6 +108,12 @@ import { NotfoundComponent } from './notfound/notfound.component';
     provideAnimationsAsync(),
    
     provideToastr(), // Toastr providers
+
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true // Allows multiple interceptors if needed
+    }
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

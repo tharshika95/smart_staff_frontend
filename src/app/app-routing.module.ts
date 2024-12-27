@@ -16,40 +16,40 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] } },
+  { path: '', redirectTo: '/employee/all', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   {
     path: 'employee',
     children: [
-      { path: 'all', component: EmployeeComponent, canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] } },
-      { path: 'add', component: AddNewEmployeeComponent, canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] } },
-      { path: 'edit/:id', component: AddNewEmployeeComponent, canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] } }, 
-      { path: 'view/:id', component: EmployeeViewComponent, canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] } }, 
-      { path: 'registered', component: EmployeeComponent, canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] } },
-      { path: 'past', component: EmployeeComponent, canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] } },
+      { path: 'all', component: EmployeeComponent, canActivate: [AuthGuard] },
+      { path: 'add', component: AddNewEmployeeComponent, canActivate: [AuthGuard] },
+      { path: 'edit/:id', component: AddNewEmployeeComponent, canActivate: [AuthGuard] }, 
+      { path: 'view/:id', component: EmployeeViewComponent, canActivate: [AuthGuard] }, 
+      { path: 'registered', component: EmployeeComponent, canActivate: [AuthGuard] },
+      { path: 'past', component: EmployeeComponent, canActivate: [AuthGuard] },
     ],
   },
   {
     path: 'department',
     children: [
-      { path: 'all', component: DepartmentComponent, canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] } },
-      { path: 'add', component: AddNewDepartmentComponent, canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] } },
-      { path: 'edit/:id', component: AddNewDepartmentComponent,canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] } },
+      { path: 'all', component: DepartmentComponent, canActivate: [AuthGuard] },
+      { path: 'add', component: AddNewDepartmentComponent, canActivate: [AuthGuard] },
+      { path: 'edit/:id', component: AddNewDepartmentComponent,canActivate: [AuthGuard] },
     ],
   },
   {
     path: 'designation',
     children: [
-      { path: 'all', component: DesignationComponent, canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] } },
-      { path: 'add', component: AddNewDesignationComponent, canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] } },
-      { path: 'edit/:id', component: AddNewDesignationComponent, canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] } },
+      { path: 'all', component: DesignationComponent, canActivate: [AuthGuard] },
+      { path: 'add', component: AddNewDesignationComponent, canActivate: [AuthGuard] },
+      { path: 'edit/:id', component: AddNewDesignationComponent, canActivate: [AuthGuard] },
     ],
   },
   {
     path: 'users',
     children: [
-      { path: 'all', component: UserComponent, canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] } },
-      { path: 'edit/:id', component: UserComponent, canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] } },
+      { path: 'all', component: UserComponent, canActivate: [AuthGuard] },
+      { path: 'edit/:id', component: UserComponent, canActivate: [AuthGuard] },
     ],
   },
   { path: 'login', component: LoginComponent },

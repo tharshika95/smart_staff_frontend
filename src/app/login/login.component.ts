@@ -19,7 +19,7 @@ export class LoginComponent {
 
   onSubmit() {
     this.authService.login({ email: this.email, password: this.password }).subscribe(
-      () => this.router.navigate(['/dashboard']),
+      () => this.router.navigate(['/employee/all']),
       (error) => (this.errorMessage = 'Invalid credentials. Please try again.')
     );
   }

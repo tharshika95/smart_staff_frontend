@@ -67,8 +67,8 @@ export class SmartStaffService {
     return this.http.delete<ApiResponse<Designation>>(`${this.apiUrl}/api/designations/${id}`);
   }
 
-  createDesignationDetail(payload: any): Observable<ApiResponse<Department>> {
-    return this.http.post<ApiResponse<Department>>(`${this.apiUrl}/api/designations`, payload);
+  createDesignationDetail(payload: any): Observable<ApiResponse<Designation>> {
+    return this.http.post<ApiResponse<Designation>>(`${this.apiUrl}/api/designations`, payload);
   }
 
   uploadEmployeeImage(file: File, empId: string) {
@@ -103,4 +103,4 @@ export class SmartStaffService {
 
 }
 
-export const basePath = "http://localhost:8080" ;
+export const basePath = "http://localhost:8082" ;
