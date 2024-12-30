@@ -13,7 +13,7 @@ COPY . .
 RUN npm run build --prod
 
 # Stage 2: Serve the application with NGINX
-FROM nginx:1.21
+FROM nginx:latest
 
 # Copy the built application from the previous stage
 COPY --from=build-stage /app/dist/smart_staff_frontend/browser /usr/share/nginx/html
