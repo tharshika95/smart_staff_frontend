@@ -7,8 +7,8 @@ pipeline {
         DOCKER_HUB_CREDENTIALS = 'smart-staff-frontend-docker-hub-credentials' // Docker Hub credentials ID
         PORT = '80'                                                           // Exposed port
         HOST_PORT = '4200'
-        VERSION = getVersion(GITBRANCH)
-        DOCKER_IMAGE_NAME = getTagName(VERSION, BUILD_NUMBER)                       // Docker image name
+        VERSION = getVersion(GIT_BRANCH)  // Use GIT_BRANCH built-in Jenkins variable
+        DOCKER_IMAGE_NAME = getTagName(VERSION, BUILD_NUMBER)  // Docker image name
     }
 
     stages {
@@ -36,12 +36,12 @@ pipeline {
         stage('Push Docker Image to Docker Hub') {
             steps {
                 echo 'Pushing Docker image to Docker Hub...'
-                withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                      bat """
-                      echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-                      docker tag ${DOCKER_IMAGE_NAME} $DOCKER_USER/${DOCKER_IMAGE_NAME}:latest
-                      docker push $DOCKER_USER/${DOCKER_IMAGE_NAME}:latest
-                      """
+                withCredentials([usernamePassword(credentialsId: DOCKER_HUB_CREDENTIALS, usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    bat """
+                    echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+                    docker tag ${DOCKER_IMAGE_NAME} $DOCKER_USER/${DOCKER_IMAGE_NAME}:latest
+                    docker push $DOCKER_USER/${DOCKER_IMAGE_NAME}:latest
+                    """
                 }
             }
         }
