@@ -45,17 +45,6 @@ pipeline {
                 }
             }
         }
-
-        stage('Deploy') {
-            steps {
-                // Stop and remove the existing container, then run a new one
-                bat """
-                docker stop ${DOCKER_CONTAINER_NAME} || true
-                docker rm ${DOCKER_CONTAINER_NAME} || true
-                docker run -d --name ${DOCKER_CONTAINER_NAME} -p ${PORT}:${PORT} ${DOCKER_IMAGE_NAME}
-                """
-            }
-        }
     }
 
     post {
