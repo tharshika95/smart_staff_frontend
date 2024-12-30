@@ -8,8 +8,7 @@ pipeline {
         PORT = '80'                                                     // Exposed port
         GITBRANCH = 'main'                                              // Git branch variable (example: 'main' or 'feature-branch')
         VERSION = getVersion(GITBRANCH)
-        GIT_TAG = getTagName(VERSION, BUILD_NUMBER)
-        DOCKER_IMAGE_NAME = GIT_TAG                       // Docker image name
+        DOCKER_IMAGE_NAME = getTagName(VERSION, BUILD_NUMBER)                       // Docker image name
     }
 
     stages {
