@@ -5,7 +5,8 @@ pipeline {
         REPO_URL = 'https://github.com/tharshika95/smart_staff_frontend.git'  // Repository URL
         DOCKER_CONTAINER_NAME = 'smart-staff-frontend-app'                      // Docker container name
         DOCKER_HUB_CREDENTIALS = 'smart-staff-frontend-docker-hub-credentials' // Docker Hub credentials ID
-        PORT = '80'                                                     // Exposed port                                             // Git branch variable (example: 'main' or 'feature-branch')
+        PORT = '80'                                                           // Exposed port
+        HOST_PORT = '4200'
         VERSION = getVersion(GITBRANCH)
         DOCKER_IMAGE_NAME = getTagName(VERSION, BUILD_NUMBER)                       // Docker image name
     }
@@ -35,11 +36,23 @@ pipeline {
         stage('Push Docker Image to Docker Hub') {
             steps {
                 echo 'Pushing Docker image to Docker Hub...'
-                script {
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_HUB_CREDENTIALS) {
-                        bat "docker push ${DOCKER_IMAGE}:${TAG}"
-                    }
+                withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                      bat """
+                      echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+                      docker tag ${DOCKER_IMAGE_NAME} $DOCKER_USER/${DOCKER_IMAGE_NAME}:latest
+                      docker push $DOCKER_USER/${DOCKER_IMAGE_NAME}:latest
+                      """
                 }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // Stop and remove the existing container, then run a new one
+                bat """
+                docker stop ${DOCKER_CONTAINER_NAME} || true
+                docker rm ${DOCKER_CONTAINER_NAME} || true
+                docker run -d --name ${DOCKER_CONTAINER_NAME} -p ${HOST_PORT}:${PORT} ${DOCKER_IMAGE_NAME}
+                """
             }
         }
     }
