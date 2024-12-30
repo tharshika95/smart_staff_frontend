@@ -1,5 +1,5 @@
 # Stage 1: Build the Angular application
-FROM node:16 as build-stage
+FROM node:20 as build-stage
 
 # Set the working directory
 WORKDIR /app
@@ -16,7 +16,7 @@ RUN npm run build --prod
 FROM nginx:1.21
 
 # Copy the built application from the previous stage
-COPY --from=build-stage /app/dist/your-angular-app /usr/share/nginx/html
+COPY --from=build-stage /app/dist/smart_staff_frontend/browser /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
