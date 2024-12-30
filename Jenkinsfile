@@ -4,7 +4,7 @@ pipeline {
     environment {
         REPO_URL = 'https://github.com/tharshika95/smart_staff_frontend.git'  // Repository URL
         DOCKER_CONTAINER_NAME = 'smart-staff-frontend-app'                      // Docker container name
-        DOCKER_CREDENTIALS_ID = 'smart-staff-frontend-docker-hub-credentials' // Docker Hub credentials ID
+        DOCKER_HUB_CREDENTIALS = 'smart-staff-frontend-docker-hub-credentials' // Docker Hub credentials ID
         PORT = '80'                                                     // Exposed port                                             // Git branch variable (example: 'main' or 'feature-branch')
         VERSION = getVersion(GITBRANCH)
         DOCKER_IMAGE_NAME = getTagName(VERSION, BUILD_NUMBER)                       // Docker image name
