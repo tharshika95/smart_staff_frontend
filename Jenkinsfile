@@ -48,6 +48,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Stop and remove the existing container, then run a new one
+                echo 'Deploy...'
                 bat """
                 docker stop ${DOCKER_CONTAINER_NAME} || exit /b 0
                 docker rm ${DOCKER_CONTAINER_NAME} || exit /b 0
