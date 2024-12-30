@@ -49,8 +49,8 @@ pipeline {
             steps {
                 // Stop and remove the existing container, then run a new one
                 bat """
-                docker stop ${DOCKER_CONTAINER_NAME} || true
-                docker rm ${DOCKER_CONTAINER_NAME} || true
+                docker stop ${DOCKER_CONTAINER_NAME} || exit /b 0
+                docker rm ${DOCKER_CONTAINER_NAME} || exit /b 0
                 docker run -d --name ${DOCKER_CONTAINER_NAME} -p ${HOST_PORT}:${PORT} ${DOCKER_IMAGE_NAME}
                 """
             }
