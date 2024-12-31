@@ -116,7 +116,7 @@ export class EmployeeComponent implements AfterViewInit{
           email: employee.email,
           dateOfJoining: employee.dateOfJoining,
           salary: employee.salary,
-          isActive: employee.active,
+          isActive: employee.isActive,
           temporaryAddress: employee.temporaryAddress,
           permanentAddress: employee.permanentAddress,
           contactNo1: employee.contactNo1,

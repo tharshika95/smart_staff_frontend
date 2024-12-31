@@ -134,7 +134,7 @@ export class AddNewEmployeeComponent {
         const payload = this.employeeForm.getRawValue();
         this.service.updateEmployee(payload, employeeId).subscribe((response) => {
           if (response.status === 'SUCCESS') {
-            this.toastr.success('Employee created successfully!', 'success');
+            this.toastr.success('Employee updated successfully!', 'success');
             this.resetForm();
           }
         });
@@ -214,7 +214,7 @@ export class AddNewEmployeeComponent {
           email: employee.email,
           dateOfJoining: employee.dateOfJoining,
           salary: employee.salary,
-          isActive: employee.active,
+          isActive: employee.isActive,
           temporaryAddress: employee.temporaryAddress,
           permanentAddress: employee.permanentAddress,
           contactNo1: employee.contactNo1,

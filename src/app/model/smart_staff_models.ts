@@ -52,21 +52,21 @@
     contactNo2: string;
     department: Department;
     designation: Designation;
-    active: boolean;
+    isActive: boolean;
   }
   
   export interface Department {
     id: number;
     name: string;
     description: string;
-    active: boolean;
+    isActive: boolean;
   }
   
   export interface Designation {
     id: number;
     name: string;
     description: string;
-    active: boolean;
+    isActive: boolean;
   }
   
   export interface Pageable {

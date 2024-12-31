@@ -44,7 +44,7 @@ export class AddNewDesignationComponent {
   }
 
   loadDepartmentDetail(id: number): void {
-    this.service.getDepartmentDetail(id).subscribe(response => {
+    this.service.getDesignationDetail(id).subscribe(response => {
       if (response.status === 'SUCCESS' && response.data) {
         this.designationForm.patchValue(response.data);
       }
